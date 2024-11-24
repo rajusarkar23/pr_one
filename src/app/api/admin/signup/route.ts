@@ -23,7 +23,7 @@ export async function POST(req: Request) {
         isAdmin: true,
       });
       console.log(admin);
-      return NextResponse.json({ success: "Created" });
+      return NextResponse.json({ success: "Admin registered successfully." });
     } catch (error) {
       console.log(error);
       return;

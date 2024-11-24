@@ -1,8 +1,12 @@
-"use client";
+'use client'
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 export default function Signup() {
   const [formData, setFormData] = useState({});
+  const router = useRouter()
+  console.log(formData);
+  
   const handleFormDataChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
@@ -14,7 +18,7 @@ export default function Signup() {
     e.preventDefault();
 
     try {
-      const res = await fetch("/api/admin/signup", {
+      const res = await fetch("/api/admin/signin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -24,6 +28,10 @@ export default function Signup() {
 
       const resData = await res.json();
       console.log(resData);
+
+      if (resData.success === true) {
+       router.push("/admin/dashboard")
+      }
     } catch (error) {
       console.log(error);
     }
@@ -59,7 +67,7 @@ export default function Signup() {
           type="submit"
           className="bg-orange-400 w-44 py-1 font-bold text-xl rounded hover:bg-orange-500 text-white"
         >
-          Register
+          Login
         </button>
       </div>
     </form>
