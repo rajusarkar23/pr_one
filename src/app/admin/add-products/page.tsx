@@ -1,9 +1,18 @@
-import React from 'react'
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+import React from "react";
 
-const AddProducts = () => {
+const AddProducts = async () => {
+
+  if (!(await cookies()).get("access")) {
+    redirect("/admin/signin")
+  }
+
   return (
-    <div>AddProducts</div>
-  )
-}
+    <div>
+      AddProducts
+    </div>
+  );
+};
 
-export default AddProducts
+export default AddProducts;
