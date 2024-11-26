@@ -35,7 +35,7 @@ export default async function AddProductsForm() {
       <div className="text-center mt-2">
         <button
           type="submit"
-          className="bg-blue-500 px-2 py-1 rounded-md text-white hover:bg-blue-600 transition-all"
+          className="bg-blue-500 px-10 py-1 rounded-full text-white hover:bg-blue-600 transition-all"
         >
           Add Product
         </button>
