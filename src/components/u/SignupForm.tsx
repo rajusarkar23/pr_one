@@ -1,14 +1,48 @@
+"use client"
+import { ChangeEvent, FormEvent, useState } from "react";
+
 export default function SignupForm() {
+const [formData, setFormData] = useState({})
+console.log(formData);
+
+const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  setFormData({
+    ...formData,
+    [e.target.id]: e.target.value
+  })
+}
+
+const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  e.preventDefault()
+  try {
+    const res = await fetch("/api/user/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(formData)
+    })
+
+    const resData = await res.json()
+    console.log(resData);
+    
+  } catch (error) {
+    console.log(error);
+    
+  }
+}
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div className="flex flex-col space-y-3 items-center justify-center mt-24">
         <div>
           <label className="flex">Email</label>
           <input
             type="email"
-            id="emai"
+            id="email"
+            name="email"
             placeholder="Email"
             className="border px-1"
+            onChange={handleChange}
           />
         </div>
         <div>
@@ -16,8 +50,10 @@ export default function SignupForm() {
           <input
             type="password"
             id="password"
+            name="password"
             placeholder="Password"
             className="border px-1"
+            onChange={handleChange}
           />
         </div>
         <button
