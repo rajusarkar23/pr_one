@@ -22,7 +22,6 @@ export async function POST(req: Request) {
         password: hashPassword,
         isAdmin: true,
       });
-      console.log(admin);
       return NextResponse.json({ success: "Admin registered successfully." });
     } catch (error) {
       console.log(error);

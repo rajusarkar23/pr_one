@@ -23,7 +23,6 @@ export default function Signup() {
       });
 
       const resData = await res.json();
-      console.log(resData);
     } catch (error) {
       console.log(error);
     }

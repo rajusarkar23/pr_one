@@ -5,7 +5,6 @@ import React, { useState } from "react";
 export default function Signup() {
   const [formData, setFormData] = useState({});
   const router = useRouter()
-  console.log(formData);
   
   const handleFormDataChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -27,7 +26,6 @@ export default function Signup() {
       });
 
       const resData = await res.json();
-      console.log(resData);
 
       if (resData.success === true) {
        router.push("/admin/dashboard")

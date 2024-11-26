@@ -21,7 +21,6 @@ export async function POST(req: Request) {
         email,
         password: hashPassword,
       });
-      console.log(user);
       const token = jwt.sign({userId: user._id}, `${process.env.USER_JWT_SECRET}`)
 
       if (user) {
