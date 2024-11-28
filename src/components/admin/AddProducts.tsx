@@ -1,4 +1,33 @@
-export default async function AddProductsForm() {
+"use client";
+
+import { useState } from "react";
+
+export default function AddProductsForm() {
+  // const [file, setFile] = useState({});
+  // console.log(file);
+
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = e.target.files?.[0];
+    if (!selectedFile) return
+
+    const formData = new FormData()
+    formData.append("file", selectedFile)
+
+    try {
+      const res = await fetch("/api/upload-image", {
+        method: "POST",
+        body: formData
+      })
+      const resData = await res.json()
+      console.log(resData);
+       
+    } catch (error) {
+      console.log(error);
+      
+    }
+    
+  };
+
   return (
     <form>
       <div className="flex flex-col items-center">
@@ -29,7 +58,7 @@ export default async function AddProductsForm() {
         </div>
         <div className="w-48">
           <label className="flex">Image: Upload image</label>
-          <input type="file" />
+          <input type="file" onChange={handleFileChange} />
         </div>
       </div>
       <div className="text-center mt-2">
