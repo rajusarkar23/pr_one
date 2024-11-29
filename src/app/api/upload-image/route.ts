@@ -19,7 +19,22 @@ export async function POST(request: NextRequest) {
 
   const files = [];
 
-  const fileName = `${Math.floor(Math.random() * 100)}`;
+  const numsAndLetters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWSYZ1234567890"
+
+  function generateFileName(l: number){
+    let randomString = ""
+    const multiplyLength = numsAndLetters.length
+
+    for (let i = 0; i < l; i++) {
+      const randomsValueLength = Math.floor(Math.random() * multiplyLength)
+
+      randomString += numsAndLetters[randomsValueLength]
+      
+    }
+    return randomString
+  }
+
+  const fileName = generateFileName(20)
 
   const uploadParams = {
     Bucket: process.env.CLOUDFLARE_BUCKET_NAME,

@@ -8,7 +8,7 @@ const Dashboard = async () => {
   if (!(await cookies()).get("access")) {
     redirect("/admin/signin")
   }
-  return <div><GetProducts /></div>;
+  return <div>Dashboard</div>;
 };
 
 export default Dashboard;
