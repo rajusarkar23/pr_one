@@ -14,9 +14,9 @@ export async function POST(req: NextRequest) {
   const { price, description, title, imageUrl } = await req.json();
   await dbConnection();
 
-  const findAdmin = await Admin.findById(userId)
+  const findAdmin = await Admin.findById(userId);
   if (!findAdmin) {
-    return NextResponse.json({message: "Please login and try again again"})
+    return NextResponse.json({ message: "Please login and try again again" });
   }
 
   try {
@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
       description,
       title,
       imageUrl,
-      createdBy: userId
+      createdBy: userId,
     });
     if (!product) {
       return NextResponse.json({ message: "Unable to add product." });
@@ -41,4 +41,33 @@ export async function POST(req: NextRequest) {
   }
 }
 
-export async function GET(req: NextRequest) {}
+export async function GET(req: NextRequest) {
+  console.log("ran");
+
+  const adminId = await getCurrentLogedInPerson();
+  if (!adminId) {
+    return NextResponse.json({
+      success: false,
+      message: "Id is not defined, Login again.",
+    });
+  }
+
+  await dbConnection();
+
+  try {
+    const fetchProducts = await Product.find({ createdBy: adminId });
+    if (!fetchProducts) {
+      return NextResponse.json({
+        success: false,
+        message: "You don't have any products yet.",
+      });
+    }
+    return NextResponse.json({
+      success: true,
+      message: "Products fetched successfully",
+      fetchProducts,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
