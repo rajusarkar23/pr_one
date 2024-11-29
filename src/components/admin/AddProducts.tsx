@@ -1,7 +1,9 @@
 "use client";
 
-import { BadgeCheck, LucideCircle, RotateCcw } from "lucide-react";
-import { useState } from "react";
+import { BadgeCheck, RotateCcw } from "lucide-react";
+// import { cookies } from "next/headers";
+import { useRouter } from "next/navigation";
+import { use, useState } from "react";
 
 export default function AddProductsForm() {
   const [imgUrl, setImgUrl] = useState("");
@@ -11,6 +13,15 @@ export default function AddProductsForm() {
   // states for boolean
   const [isImgUploading, setIsImgUploading] = useState(false)
   const [isImgUploaded, setIsImgUploaded] = useState(false)
+  //
+  const router = useRouter()
+  // cookies
+// const cookie = use(cookies()).get("access")
+// console.log("cooki");
+
+// console.log(cookie);
+
+  
 
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsImgUploaded(false)
@@ -47,6 +58,9 @@ export default function AddProductsForm() {
       });
 
       const resData = await res.json();
+      if (resData.success === true) {
+        router.push("/admin/dashboard")
+      }
       console.log(resData);
     } catch (error) {
       console.log(error);

@@ -16,12 +16,15 @@ const ProductSchema = new Schema({
   },
   price: {
     type: String,
-
     required: [true, "Price is required"],
   },
   imageUrl: {
     type: String,
     required: [true, "Image url required"],
+  },
+  createdBy: {
+    type: String,
+    required: [true, "Created by is not defined."],
   },
 });
 
