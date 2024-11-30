@@ -17,7 +17,6 @@ interface productsDetails {
 export default function GetProducts() {
   const [product, setProduct] = useState<productsDetails[]>([]);
   const [loading, setLoading] = useState(false);
-  console.log(product);
 
   const getProd = async () => {
     setLoading(true);

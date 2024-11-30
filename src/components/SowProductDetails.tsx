@@ -13,7 +13,7 @@ interface ProductDetails {
 }
 
 export default function ProductDetails() {
-  // Assuming product ID is passed as a prop or obtained from another method
+ 
   const params = useParams();
   const [product, setProduct] = useState<ProductDetails>({
     _id: "",
@@ -84,11 +84,11 @@ export default function ProductDetails() {
               ${product.price}
             </span>
             <span className="text-sm text-gray-500">
-              Created by: {product.createdBy}
+              Sold by: {product.createdBy}
             </span>
           </div>
 
-          <p className="text-gray-600 leading-relaxed">{product.description}</p>
+          <p className="text-gray-600">{product.description}</p>
 
           <div className="flex space-x-4">
             <button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition flex items-center">
