@@ -1,7 +1,9 @@
+import { Search } from "lucide-react";
+
 export default function Top() {
   return (
-    <div className="bg-[#C1DCDC] w-[1248px] h-[512px] rounded-lg px-3">
-      <div>
+    <div className=" flex justify-between bg-[#C1DCDC] w-[1248px] h-[512px] rounded-lg px-16">
+      <div className="ml-4 mt-4">
         <h1 className="font-extrabold text-5xl">
           Buy your <br /> dream plants
         </h1>
@@ -14,6 +16,19 @@ export default function Top() {
             <p className="text-xl">100+</p>
             <p className="text-xl">Customers</p>
           </div>
+        </div>
+        <div className="mt-40 flex">
+          <input
+            type="text"
+            placeholder="What are you looking for today?"
+            className="w-80 h-14 rounded px-2"
+          />
+          <Search className="mt-3 ml-[-40px] bg-[#CADCDC] rounded w-7 h-9 px-1" />
+        </div>
+      </div>
+      <div>
+        <div>
+          <img src="unsplash_cLaaxa4DSnc-removebg-preview 1 (1).png" alt="plant" width="350px"/>
         </div>
       </div>
     </div>
