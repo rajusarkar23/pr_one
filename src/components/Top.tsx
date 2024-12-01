@@ -2,18 +2,18 @@ import { Search } from "lucide-react";
 
 export default function Top() {
   return (
-    <div className=" flex justify-between bg-[#C1DCDC] w-[1248px] h-[512px] rounded-lg px-16">
+    <div className=" flex justify-between bg-[#C1DCDC] rounded-lg w-full">
       <div className="ml-4 mt-4">
         <h1 className="font-extrabold text-5xl">
           Buy your <br /> dream plants
         </h1>
         <div className="flex gap-8 mt-6 divide-x divide-black">
           <div>
-            <p className="text-xl">50+</p>
+            <p className="text-xl font-semibold">50+</p>
             <p className="text-xl">Plant species</p>
           </div>
           <div className="px-9">
-            <p className="text-xl">100+</p>
+            <p className="text-xl font-semibold">100+</p>
             <p className="text-xl">Customers</p>
           </div>
         </div>

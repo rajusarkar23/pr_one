@@ -1,3 +1,4 @@
+import Bottom from "./Bottom";
 import Top from "./Top";
 
 export default function Hero() {
@@ -5,6 +6,9 @@ export default function Hero() {
     <div>
       <div className="mt-3 flex justify-center items-center">
         <Top />
+      </div>
+      <div className="mt-3">
+        <Bottom />
       </div>
     </div>
   );
