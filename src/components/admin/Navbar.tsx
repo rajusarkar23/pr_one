@@ -13,6 +13,9 @@ export default function SellerNavbar() {
 
   return (
     <nav className="flex justify-between px-20 bg-blue-100 h-10 items-center">
+      <div>
+        <Link href={"/"} className="font-bold">GREENMIND</Link>
+      </div>
       <div className="space-x-2">
         {navLinks.map((links, index) => (
           <Link
