@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
     console.log(error);
   }
 }
-
+// fetch product for admin
 export async function GET(req: NextRequest) {
 
   const adminId = await getCurrentLogedInPerson();
